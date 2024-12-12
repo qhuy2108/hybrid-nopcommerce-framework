@@ -217,6 +217,12 @@ public class BasePage {
     public void clickAndHoldToElement(WebDriver driver , String locator) {
         new Actions(driver).clickAndHold(getElement(driver, locator)).perform();
     }
+    public void releaseLeftMouse(WebDriver driver) {
+        new Actions(driver).release().perform();
+    }
+    public void clickToElementByAction(WebDriver driver , String locator) {
+        new Actions(driver).click(getElement(driver, locator)).perform();
+    }
     public void pressKeyToElement(WebDriver driver , String locator, Keys key) {
         new Actions(driver).sendKeys(getElement(driver, locator), key).perform();
     }
@@ -281,6 +287,9 @@ public class BasePage {
 
     public void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+    }
+    public void waitForElementSelected(WebDriver driver, String locator) {
+        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeSelected(getByXpath(locator)));
     }
     public void waitForElementPresence(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(getByXpath(locator)));
