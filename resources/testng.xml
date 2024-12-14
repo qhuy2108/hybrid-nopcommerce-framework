@@ -5,10 +5,11 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
+            <class name="com.nopcommerce.users.Level_05_PageFactory" />
             <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
         </classes>
     </test>
-    <test name="Run on Edge browser">
+    <!--<test name="Run on Edge browser">
         <parameter name="browser" value="edge"></parameter>
         <classes>
             <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
@@ -19,6 +20,6 @@
         <classes>
             <class name="com.nopcommerce.users.Level_04_Multiple_Browser" />
         </classes>
-    </test>
+    </test>-->
 
 </suite>

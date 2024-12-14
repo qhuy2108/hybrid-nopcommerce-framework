@@ -296,7 +296,8 @@ public class BasePage {
     }
     public void waitForElementInvisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
-    }public void waitForElementClickAble(WebDriver driver, String locator) {
+    }
+    public void waitForElementClickAble(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
     }
 
