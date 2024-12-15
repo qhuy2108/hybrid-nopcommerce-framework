@@ -6,11 +6,11 @@ import pageUIs.CustomerInfoPageUI;
 
 public class CustomerInfoPageObject extends BasePage {
 
+    private WebDriver driver;
+
     public CustomerInfoPageObject(WebDriver driver) {
         this.driver = driver;
     } // khi generate hàm này tự lên đầu vì nó sẽ chạy trước private WebDriver driver ở sau cũng dc
-
-    private WebDriver driver;
 
 
     public boolean isGenderMaleSelected() {
