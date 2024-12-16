@@ -52,4 +52,6 @@ public class CustomerInfoPageObject extends BasePage {
         waitForElementVisible(driver, CustomerInfoPageUI.COMPANY_NAME_TEXTBOX);
         return getElementAttribute(driver, CustomerInfoPageUI.COMPANY_NAME_TEXTBOX,"value");
     }
+
+
 }
