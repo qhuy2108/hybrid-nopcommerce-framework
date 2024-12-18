@@ -49,7 +49,7 @@ public class BasePage {
 
 
     public Alert waitAlertPresence(WebDriver driver) {
-        return new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.alertIsPresent());
+        return new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.alertIsPresent());
     }
 
     public void acceptToAlert(WebDriver driver) {
@@ -111,8 +111,35 @@ public class BasePage {
         return driver.findElements(By.xpath(locator));
     }
 
+    public By getByLocator(String prefixlocator) {
+        By by = null;
+        if (prefixlocator.toLowerCase().startsWith("id=")) {
+            prefixlocator = prefixlocator.substring(3);
+            by = By.id(prefixlocator);
+        } else if (prefixlocator.toLowerCase().startsWith("class=")) {
+            prefixlocator = prefixlocator.substring(6);
+            by = By.className(prefixlocator);
+        } else if (prefixlocator.toLowerCase().startsWith("name=")) {
+            prefixlocator = prefixlocator.substring(5);
+            by = By.name(prefixlocator);
+        } else if (prefixlocator.toLowerCase().startsWith("tagname=")) {
+            prefixlocator = prefixlocator.substring(8);
+            by = By.tagName(prefixlocator);
+        } else if (prefixlocator.toLowerCase().startsWith("css=")) {
+            prefixlocator = prefixlocator.substring(4);
+            by = By.cssSelector(prefixlocator);
+        } else if (prefixlocator.toLowerCase().startsWith("xpath=")) {
+            prefixlocator = prefixlocator.substring(6);
+            by = By.xpath(prefixlocator);
+        } else {
+            throw new RuntimeException("---------> Your prefixlocator is not support <----------");
+        }
+        return by;
+    }
+
     public By getByXpath(String locator) {
         return By.xpath(locator);
+        //Đến topic 76 chuyển sang dung locator prefix
     }
 
     public void clickToElement(WebDriver driver, String locator) {
@@ -287,19 +314,19 @@ public class BasePage {
 
 
     public void waitForElementVisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.visibilityOfElementLocated(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locator)));
     }
     public void waitForElementSelected(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeSelected(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.elementToBeSelected(getByLocator(locator)));
     }
     public void waitForElementPresence(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.presenceOfElementLocated(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(getByLocator(locator)));
     }
     public void waitForElementInvisible(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.invisibilityOfElementLocated(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.invisibilityOfElementLocated(getByLocator(locator)));
     }
     public void waitForElementClickAble(WebDriver driver, String locator) {
-        new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(getByXpath(locator)));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.elementToBeClickable(getByLocator(locator)));
     }
 
 
