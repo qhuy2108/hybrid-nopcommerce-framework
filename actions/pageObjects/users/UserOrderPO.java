@@ -1,10 +1,10 @@
-package pageObjects;
+package pageObjects.users;
 
-import commons.BasePage;
 import org.openqa.selenium.WebDriver;
 
-public class OrderPageObject extends BasePage {
-    public OrderPageObject(WebDriver driver) {
+public class UserOrderPO extends SidebarPageObject {
+    public UserOrderPO(WebDriver driver) {
+        super(driver);
         this.driver = driver;
     } // // khi generate hàm này tự lên đầu vì nó sẽ chạy trước private WebDriver driver ở sau cũng dc
 

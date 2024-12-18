@@ -1,6 +1,5 @@
 package com.nopcommerce.users;
 
-import commons.BasePage;
 import commons.BaseTest;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -10,21 +9,20 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.CustomerInfoPageObject;
-import pageObjects.HomePageObject;
-import pageObjects.LoginPageObject;
-import pageObjects.RegisterPageObject;
+import pageObjects.users.UserCustomerInfoPO;
+import pageObjects.users.UserHomePO;
+import pageObjects.users.UserLoginPO;
+import pageObjects.users.UserRegisterPO;
 
 import java.time.Duration;
-import java.util.Random;
 
 public class Level_03_Page_Object_Pattern extends BaseTest {
     private WebDriver driver;
 
-    private HomePageObject homePage;
-    private RegisterPageObject registerPage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerInfoPage;
+    private UserHomePO homePage;
+    private UserRegisterPO registerPage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerInfoPage;
 
     String emailAddress, firstName, lastName, password, companyName, day, month, year;
 
@@ -41,7 +39,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
         driver.manage().window().setSize(new Dimension(1600,900));
         driver.get("https://demo.nopcommerce.com/");
 
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
 
         emailAddress = "Kaka" + getRandomNumber() + "@gmail.net";
         firstName = "Ricardo";
@@ -58,7 +56,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
     public void User_01_Register() {
         homePage.clickToRegisterLink();
 
-        registerPage = new RegisterPageObject(driver);
+        registerPage = new UserRegisterPO(driver);
 
         registerPage.clickToMaleRadio();
         registerPage.enterToFirstName(firstName);
@@ -81,10 +79,10 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
     public void User_02_Login() {
         registerPage.clickToLogoutButton();
 
-        homePage = new HomePageObject(driver);
+        homePage = new UserHomePO(driver);
         homePage.clickToLoginLink();
 
-        loginPage = new LoginPageObject(driver);
+        loginPage = new UserLoginPO(driver);
 
         loginPage.enterToEmailTextbox(emailAddress);
         loginPage.enterToPasswordTextbox(password);
@@ -99,7 +97,7 @@ public class Level_03_Page_Object_Pattern extends BaseTest {
     public void User_03_MyAccount() {
         homePage.clickToMyAccountLink();
 
-        customerInfoPage = new CustomerInfoPageObject(driver);
+        customerInfoPage = new UserCustomerInfoPO(driver);
 
         Assert.assertTrue(customerInfoPage.isGenderMaleSelected());
         Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);

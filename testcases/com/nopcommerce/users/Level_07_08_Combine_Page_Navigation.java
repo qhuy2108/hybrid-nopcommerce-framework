@@ -8,16 +8,20 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.*;
+import pageObjects.users.*;
 
-public class Level_07_Switch_Page_Object extends BaseTest {
+public class Level_07_08_Combine_Page_Navigation extends BaseTest {
     private WebDriver driver;
-    private HomePageObject homePage;
-    private RegisterPageObject registerPage;
-    private LoginPageObject loginPage;
-    private CustomerInfoPageObject customerInfoPage;
-    private RewardPointPageObject rewardPointPage;
-    private OrderPageObject orderPage;
-    private AddressPageObject addressPage;
+    private UserHomePO homePage;
+    private UserRegisterPO registerPage;
+    private UserLoginPO loginPage;
+    private UserCustomerInfoPO customerInfoPage;
+
+    //topic 74
+    private UserRewardPointPO rewardPointPage;
+    private UserOrderPO orderPage;
+    private UserAddressPO addressPage;
+    // -------------------------------------------------------------------------------------
 
     String emailAddress, firstName, lastName, password, companyName, day, month, year;
 
@@ -35,7 +39,7 @@ public class Level_07_Switch_Page_Object extends BaseTest {
         password = "123456";
         companyName = "Milan";
 
-        homePage = PageGenerator.getHomePage(driver);
+        homePage = PageGenerator.getUserHomePage(driver);
     }
 
 
@@ -92,20 +96,20 @@ public class Level_07_Switch_Page_Object extends BaseTest {
     }
 
     @Test
-    public void User_04_Switch_Page() {
-        addressPage = customerInfoPage.openAddressPage(driver);
+    public void User_04_Page_Navigation() {
+        addressPage = customerInfoPage.openAddressPage();
 
-        rewardPointPage = addressPage.openRewardPointPage(driver);
+        rewardPointPage = addressPage.openRewardPointPage();
 
-        orderPage = rewardPointPage.openOrderPage(driver);
+        orderPage = rewardPointPage.openOrderPage();
 
-        addressPage = orderPage.openAddressPage(driver);
+        addressPage = orderPage.openAddressPage();
 
-        customerInfoPage = addressPage.openCustomerInfoPage(driver);
+        customerInfoPage = addressPage.openCustomerInfoPage();
 
-        rewardPointPage = customerInfoPage.openRewardPointPage(driver);
+        rewardPointPage = customerInfoPage.openRewardPointPage();
 
-        addressPage =  rewardPointPage.openAddressPage(driver);
+        addressPage =  rewardPointPage.openAddressPage();
 
     }
 

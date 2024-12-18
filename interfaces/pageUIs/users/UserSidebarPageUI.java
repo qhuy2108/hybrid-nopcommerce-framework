@@ -1,8 +1,10 @@
-package pageUIs;
+package pageUIs.users;
 
-// [Online 29] - Topic 73 (Framework 21 - Switch Page Object) bắt đầu tạo từ bài này ----------------------------------
+// [Online 29] - Topic 73 (Framework 21 - Switch Page Object) BasePageUI bắt đầu tạo từ bài này ----------------------------------
+// Topic 74 đổi method
 
-public class BasePageUI {
+
+public class UserSidebarPageUI {
     public static final String ADDRESSES_LINK = "//div[contains(@class, 'block-account-navigation')]//a[text()= 'Addresses']";
     public static final String REWARD_POINT_LINK = "//div[contains(@class, 'block-account-navigation')]//a[text()= 'Reward points']";
     public static final String CUSTOMER_INFO_LINK = "//div[contains(@class, 'block-account-navigation')]//a[text()= 'Customer info']";
