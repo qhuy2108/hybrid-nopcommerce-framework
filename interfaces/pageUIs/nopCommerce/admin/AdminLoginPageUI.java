@@ -1,7 +1,4 @@
-package pageUIs.admin;
-
-import org.openqa.selenium.WebDriver;
-import pageObjects.PageGenerator;
+package pageUIs.nopCommerce.admin;
 
 public class AdminLoginPageUI {
     public static final String BUTTON_LOGIN = "xpath=//button[contains(@class, 'login-button')]";

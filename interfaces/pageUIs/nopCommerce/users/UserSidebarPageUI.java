@@ -1,4 +1,4 @@
-package pageUIs.users;
+package pageUIs.nopCommerce.users;
 
 // [Online 29] - Topic 73 (Framework 21 - Switch Page Object) BasePageUI bắt đầu tạo từ bài này ----------------------------------
 // Topic 74 đổi method
@@ -11,5 +11,5 @@ public class UserSidebarPageUI {
     public static final String ORDER_LINK = "xpath=//div[contains(@class, 'block-account-navigation')]//a[text()= 'Orders']";
 
     // topic 77 dynamic locator
-    public static final String DYNAMIC_LINK_BY_PAGE_NAME = "xpath=//div[contains(@class, 'block-account-navigation')]//a[text()= 'Orders']";
+    public static final String DYNAMIC_LINK_BY_PAGE_NAME = "xpath=//div[contains(@class, 'block-account-navigation')]//a[text()= '%s']";
 }

@@ -9,10 +9,10 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pageObjects.users.UserCustomerInfoPO;
-import pageObjects.users.UserHomePO;
-import pageObjects.users.UserLoginPO;
-import pageObjects.users.UserRegisterPO;
+import pageObjects.nopCommerce.users.UserCustomerInfoPO;
+import pageObjects.nopCommerce.users.UserHomePO;
+import pageObjects.nopCommerce.users.UserLoginPO;
+import pageObjects.nopCommerce.users.UserRegisterPO;
 
 import java.time.Duration;
 
