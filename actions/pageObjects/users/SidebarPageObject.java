@@ -39,4 +39,33 @@ public class SidebarPageObject extends BasePage {
         clickToElement(driver, UserSidebarPageUI.ORDER_LINK);
         return  PageGenerator.getUserOrderPage(driver);
     }
+
+
+    // chi phu hop cho so luong page it
+    public SidebarPageObject openSidebarLinkByPageName(String pageName) {
+        waitForElementClickAble(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+        clickToElement(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+
+        switch (pageName) {
+            case "Addresses":
+                return  PageGenerator.getUserAddressPage(driver);
+            case "Reward points":
+                return  PageGenerator.getUserRewardPointPage(driver);
+            case "Customer info":
+                return  PageGenerator.getUserCustomerInfoPage(driver);
+            case "Orders":
+                return  PageGenerator.getUserOrderPage(driver);
+            default:
+                throw new RuntimeException("Page name is not valid !");
+        }
+    }
+    //---------------------------------------------------------------------------------------------------
+
+
+    public void openSidebarByPageNames(String pageName) {
+        waitForElementClickAble(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+        clickToElement(driver, UserSidebarPageUI.DYNAMIC_LINK_BY_PAGE_NAME, pageName);
+    }
+
+
 }
