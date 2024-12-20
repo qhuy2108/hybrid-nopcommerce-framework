@@ -50,7 +50,7 @@ public class Level_11_DataTable extends BaseTest {
 
     }
 
-    @Test
+    //@Test
     public void Table_03_Delete() {
         // search truoc xem co khong
         homePO.enterToTextboxByHeaderName("Country", "Argentina");
@@ -67,8 +67,38 @@ public class Level_11_DataTable extends BaseTest {
         // Edit button
         homePO.editRowByCountryName("Aruba");
         sleepInSecond(2);
+    }
+
+    @Test
+    public void Table_04_Get_All_Value_Row_Or_Column() {
+        homePO.getAllValueAtColumnName("Country");
+    }
+
+    //@Test
+    public void Table_05_Action_By_Index() {
+        homePO.openPageUrl(driver,"https://www.jqueryscript.net/demo/jQuery-Dynamic-Data-Grid-Plugin-appendGrid/");
+
+        homePO.clickToLoadButton();
+
+        homePO.enterToTextboxByIndex("4","Contact Person","Automatichuy");
+        homePO.enterToTextboxByIndex("2","Company","AutoFC");
+        sleepInSecond(3);
+
+        homePO.selectToDropdownByIndex("6","Country","Malaysia");
+        homePO.selectToDropdownByIndex("7","Country","Taiwan");
+        homePO.selectToDropdownByIndex("8","Country","Japan");
+
+        homePO.checkToCheckboxByIndex("4","NPO?",false);
+        homePO.checkToCheckboxByIndex("5","NPO?",false);
+        homePO.checkToCheckboxByIndex("6","NPO?",true);
+
+        homePO.clickToIconByIndex("8","Move Up");
+        homePO.clickToIconByIndex("8","Remove");
+        homePO.clickToIconByIndex("7","Insert");
+        homePO.clickToIconByIndex("3","Remove");
 
     }
+
 
 
     @AfterClass

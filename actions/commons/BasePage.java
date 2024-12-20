@@ -111,6 +111,10 @@ public class BasePage {
         return driver.findElements(getByLocator(locator));
     }
 
+    public List<WebElement> getListElement(WebDriver driver, String locator, String ... restParameter) {
+        return driver.findElements(getByLocator(castParameter(locator, restParameter)));
+    }
+
     private String castParameter (String locator, String ... restParameter) {
         return String.format(locator, (Object[]) restParameter);
     }
@@ -228,8 +232,23 @@ public class BasePage {
             element.click();
         }
     }
+
+    public void checkToCheckbox(WebDriver driver , String locator, String... restParameter) {
+        WebElement element = getElement(driver,  castParameter(locator, restParameter));
+        if (!element.isSelected()) {
+            element.click();
+        }
+    }
+
     public void uncheckToCheckbox(WebDriver driver , String locator) {
         WebElement element = getElement(driver, locator);
+        if (element.isSelected()) {
+            element.click();
+        }
+    }
+
+    public void uncheckToCheckbox(WebDriver driver , String locator, String... restParameter) {
+        WebElement element = getElement(driver, castParameter(locator, restParameter));
         if (element.isSelected()) {
             element.click();
         }

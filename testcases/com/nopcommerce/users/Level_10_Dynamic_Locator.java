@@ -95,7 +95,7 @@ public class Level_10_Dynamic_Locator extends BaseTest {
 
     }
 
-    @Test
+    //@Test
     public void User_04_Dynamic_Locator() {
         addressPage = (UserAddressPO) customerInfoPage.openSidebarLinkByPageName("Addresses");
 
