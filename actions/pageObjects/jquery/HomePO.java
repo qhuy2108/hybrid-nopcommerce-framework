@@ -2,6 +2,7 @@ package pageObjects.jquery;
 
 import commons.BasePage;
 import jquery.HomePageUI;
+import jquery.UpLoadBasePageUI;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -105,6 +106,25 @@ public class HomePO extends BasePage {
         waitForElementClickAble(driver, HomePageUI.DYNAMIC_ICON_NAME_BY_ROW_INDEX, rowIndex, iconName);
         clickToElement(driver, HomePageUI.DYNAMIC_ICON_NAME_BY_ROW_INDEX, rowIndex, iconName);
     }
+    
+    // UpLoad ---------------------------------------------------------------------------------------------------------
+    
+    public boolean isFileLoadedByName(String fileName) {
+        waitForElementVisible(driver, UpLoadBasePageUI.FILE_NAME_LOADED, fileName);
+        return isElementDisplayed(driver, UpLoadBasePageUI.FILE_NAME_LOADED, fileName);
+    }
 
+    public void clickToUploadButton() {
+        List<WebElement> starButtons = getListElement(driver, UpLoadBasePageUI.STAR_UPLOAD_BUTTON);
 
+        for (WebElement starButton : starButtons) {
+            starButton.click();
+            sleepInSecond(3);
+        }
+    }
+
+    public boolean isFileUpLoaded(String fileName) {
+        waitForElementVisible(driver, UpLoadBasePageUI.FILE_UPLOADED_SUCCESS_BY_NAME, fileName);
+        return isElementDisplayed(driver, UpLoadBasePageUI.FILE_UPLOADED_SUCCESS_BY_NAME, fileName);
+    }
 }

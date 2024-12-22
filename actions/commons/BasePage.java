@@ -1,5 +1,6 @@
 package commons;
 
+import jquery.UpLoadBasePageUI;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -400,6 +401,19 @@ public class BasePage {
 
     public void waitForElementClickAble(WebDriver driver, String locator, String... restParameter) {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.elementToBeClickable(getByLocator(castParameter(locator,restParameter))));
+    }
+
+    public void uploadMultipleFiles(WebDriver driver, String... fileNames) {
+        String filePath = GlobalConstants.UPLOAD_PATH;
+        String fullFileName = "";
+        for (String file : fileNames) {
+            fullFileName = fullFileName + filePath + file + "\n";
+        }
+        // cắt ký tự xuống dòng \n ở hai đầu chuỗi đi
+        fullFileName = fullFileName.trim();
+
+        System.out.println(fullFileName);
+        getElement(driver, UpLoadBasePageUI.UPLOAD_FILE).sendKeys(fullFileName);
     }
 
 
