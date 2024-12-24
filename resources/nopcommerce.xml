@@ -4,12 +4,16 @@
 
     <parameter name="userUrl" value="https://demo.nopcommerce.com/"></parameter>
     <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/"></parameter>
+    
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+    </listeners>
 
 
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_10_Dynamic_Locator" />
+            <class name="com.nopcommerce.users.Level_13_Verify" />
             <!--<class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
         </classes>
     </test>
