@@ -1,5 +1,6 @@
 package commons;
 
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,13 +12,18 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.apache.logging.log4j.Logger;
+
 
 import java.time.Duration;
 import java.util.Random;
 
 public class BaseTest {
-private WebDriver driver;
+    private WebDriver driver;
 
+    public WebDriver getDriver() {
+        return driver;
+    }
 
     protected WebDriver getBrowserDriver(String browserName){
         BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
@@ -125,6 +131,11 @@ private WebDriver driver;
         }
         return status;
 
+    }
+
+    protected final Logger log;
+    public BaseTest() {
+        log = LogManager.getLogger(getClass());
     }
 
 

@@ -36,4 +36,5 @@ public class GlobalConstants {
     // Data Test/Environment
     public static final String DATA_TEST_PATH = PROJECT_PATH + "/data Test/";
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig/";
+    public static final String JAVA_VERSION = System.getProperty("java.version");
 }
