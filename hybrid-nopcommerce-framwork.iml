@@ -15,5 +15,6 @@
     <orderEntry type="library" name="selenium-testng" level="project" />
     <orderEntry type="library" name="log4j-2x" level="project" />
     <orderEntry type="library" name="extentReports-5.1.2" level="project" />
+    <orderEntry type="library" name="allure-report-2.24.0" level="project" />
   </component>
 </module>
