@@ -7,8 +7,7 @@
     
     <listeners>
 <!--        <listener class-name="commons.MethodListener"></listener>-->
-<!--        <listener class-name="reportConfig.ExtentListener"></listener>-->
-        <listener class-name="reportConfig.AllureListener"></listener>
+        <listener class-name="reportConfig.ExtentListener"></listener>
 
     </listeners>
 
@@ -16,7 +15,7 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_16_AllureReport" />
+            <class name="com.nopcommerce.users.Level_15_ExtentReportV5" />
             <!--<class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
         </classes>
     </test>
