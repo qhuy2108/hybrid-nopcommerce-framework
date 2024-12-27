@@ -1,6 +1,8 @@
 package commons;
 
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -12,9 +14,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.apache.logging.log4j.Logger;
 import org.testng.annotations.BeforeSuite;
-
 
 import java.io.File;
 import java.time.Duration;
@@ -140,7 +140,7 @@ public class BaseTest {
         log = LogManager.getLogger(getClass());
     }
 
-    @BeforeSuite
+    //@BeforeSuite
     public void deleteFileInReport() {
         // Remove all file in ReportNG screenshot (image)
         deleteAllFileInFolder("reportNGImage");

@@ -1,4 +1,4 @@
-package commons;
+package log4Jv2;
 
 import java.io.Serializable;
 

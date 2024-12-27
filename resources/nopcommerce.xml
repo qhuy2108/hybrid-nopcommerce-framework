@@ -6,8 +6,9 @@
     <parameter name="adminUrl" value="https://admin-demo.nopcommerce.com/"></parameter>
     
     <listeners>
-<!--        <listener class-name="commons.MethodListener"></listener>-->
-        <listener class-name="reportConfig.ExtentListener"></listener>
+        <listener class-name="commons.MethodListener"></listener>
+        <listener class-name="jiraConfig.JiraListener"></listener>
+<!--        <listener class-name="reportConfig.ExtentListener"></listener>-->
 
     </listeners>
 
@@ -15,10 +16,18 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_15_ExtentReportV5" />
+            <class name="com.nopcommerce.users.Level_17_L4J_Jira" />
             <!--<class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
         </classes>
     </test>
+
+
+
+
+
+
+
+
     <!--<test name="Run on Edge browser">
         <parameter name="browser" value="edge"></parameter>
         <classes>

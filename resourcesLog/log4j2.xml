@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="WARN" packages="commons">
+<Configuration status="WARN" packages="log4Jv2">
+
     <Properties>
         <Property name="random">$${date:dd-MM-YYYY_HH-mm-ss}</Property>
         <Property name="pattern">[%d{dd-MM-YYYY HH:mm:ss.SSS} %level %logger{36}] - %msg%n</Property>

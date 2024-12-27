@@ -37,4 +37,10 @@ public class GlobalConstants {
     public static final String DATA_TEST_PATH = PROJECT_PATH + "/data Test/";
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig/";
     public static final String JAVA_VERSION = System.getProperty("java.version");
+    
+    // Jira
+    public static final String JIRA_SITE_URL = "https://autotestinghuy.atlassian.net";
+    public static final String JIRA_USERNAME = "qhuy2108@gmail.com";
+    public static final String JIRA_API_KEY = "ATATT3xFfGF00UhQeoNvFSnAp9hQFH8Q2Cpq8wuv3QMTqRyASicou8YdUhb-M-EOidlRhN2X7--kSBLPDKM7vcutXJzalrehrX3D0wE4guG48Ie_K8-Dj6VMMcwqpgdPubunGhiukoCLBBAzRl7MvA5gtiFvxbJ1Ea9-XnxonaQnbUmJroObSsw=698C9E9F";
+    public static final String JIRA_PROJECT_KEY = "SCRUM" ;
 }

@@ -1,6 +1,7 @@
 package com.nopcommerce.users;
 
 import commons.BaseTest;
+import jiraConfig.JiraCreateIssue;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -8,12 +9,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.nopCommerce.PageGenerator;
-import pageObjects.nopCommerce.users.UserCustomerInfoPO;
-import pageObjects.nopCommerce.users.UserHomePO;
-import pageObjects.nopCommerce.users.UserLoginPO;
-import pageObjects.nopCommerce.users.UserRegisterPO;
+import pageObjects.nopCommerce.users.*;
 
-public class Level_14_Log4J extends BaseTest {
+public class Level_17_L4J_Jira extends BaseTest {
     private WebDriver driver;
     private UserHomePO homePage;
     private UserRegisterPO registerPage;
@@ -39,7 +37,7 @@ public class Level_14_Log4J extends BaseTest {
 
     }
 
-
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
     public void User_01_Register() {
         log.info("User_01_Register - STEP 01: Open Register page");
@@ -80,10 +78,11 @@ public class Level_14_Log4J extends BaseTest {
         registerPage.clickToRegisterButton();
 
         log.info("User_01_Register - STEP 13: Verify success message is displayed");
-        Assert.assertEquals(registerPage.getRegisteredSuccessMessage() , "Your registration completed");
+        Assert.assertEquals(registerPage.getRegisteredSuccessMessage() , "Your registration completed FAIL");
 
     }
 
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
     public void User_02_Login() {
         registerPage.clickToLogoutButton(); // quay ra homePage
@@ -96,6 +95,7 @@ public class Level_14_Log4J extends BaseTest {
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
     }
 
+    @JiraCreateIssue(isCreateIssue = true)
     @Test
     public void User_03_MyAccount() {
         customerInfoPage = homePage.clickToMyAccountLink();
