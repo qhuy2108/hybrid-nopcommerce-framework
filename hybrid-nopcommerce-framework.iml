@@ -8,13 +8,14 @@
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/testcases" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/javaSDET" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/resourcesLog" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="selenium-testng" level="project" />
     <orderEntry type="library" name="extentReports-5.1.2" level="project" />
     <orderEntry type="library" name="allure-report-2.24.0" level="project" />
-    <orderEntry type="library" name="libJira" level="project" />
     <orderEntry type="library" name="log4j-api-2.24.3" level="project" />
+    <orderEntry type="library" name="libJira" level="project" />
   </component>
 </module>
