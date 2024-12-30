@@ -1,55 +1,55 @@
 package com.facebook.cases;
 
 import commons.BaseTest;
-import io.qameta.allure.Description;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Severity;
-import io.qameta.allure.SeverityLevel;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pageObjects.facebook.LoginPO;
-import pageObjects.facebook.PageGenerator;
-import pageObjects.nopCommerce.users.*;
-
-import java.lang.reflect.Method;
+import pageObjects.livetechpanda.HomePO;
+import pageObjects.livetechpanda.PageGenerator;
 
 public class Level_18_Undisplayed extends BaseTest {
 
     private WebDriver driver;
     String browserName;
 
-    private LoginPO loginPO;
+    private HomePO homePO;
 
     @Parameters({"browser", "url"})
     @BeforeClass
     public void beforeClass(String browserName, String url) {
         driver = getBrowserDriver(browserName, url);
 
-        loginPO = PageGenerator.getLoginPage(driver);
-        loginPO.clickToNewAccountButton();
+        homePO = PageGenerator.getLoginPage(driver);
+
     }
 
 
     @Test
     public void TC_01_Element_Undisplayed() {
-        loginPO.enterToEmailTextbox("daodam@gmail.com.vnn");
+        homePO.clickToHeaderAccountButton();
 
-        // Case 1 : verify confirm email textbox is displayed
-        Assert.assertTrue(loginPO.isConfirmEmailTextboxDisplayed());
-
-        loginPO.enterToEmailTextbox("");
-
-        // Case 2 : verify confirm email textbox is displayed
-        Assert.assertFalse(loginPO.isConfirmEmailTextboxDisplayed());
-
-        loginPO.clickToCloseIcon();
-        Assert.assertTrue(loginPO.isConfirmEmailTextboxUndisplayed());
+        // Case 1 : verify my account link is displayed
+        Assert.assertTrue(homePO.isMyAccountLinkDisplayed());
+        sleepInSecond(2);
 
         // out date FB xem video + tai lieu excel
+    }
+
+    @Test
+    public void TC_02(){
+        homePO.clickToHeaderAccountButton();
+        // Case 2 : verify my account link is NOT displayed -- present
+        Assert.assertFalse(homePO.isMyAccountLinkDisplayed());
+        sleepInSecond(2);
+    }
+
+    @Test
+    public void TC_03(){
+        // Case 3 : verify is NOT displayed
+        Assert.assertTrue(homePO.isNotMyAccountLinkDisplayed());
     }
 
 

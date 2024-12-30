@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Facebook_Undisplayed">
 
-    <parameter name="url" value="https://www.facebook.com/"></parameter>
+    <parameter name="url" value="https://live.techpanda.org/"></parameter>
 
     <listeners>
         <listener class-name="commons.MethodListener"></listener>
