@@ -13,16 +13,13 @@
     </listeners>
 
 
-    <test name="Run on Firefox browser">
+    <test name="Run on Firefox browser" preserve-order="true" >
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_19_Pattern_Object" />
-            <!--<class name="com.nopcommerce.users.Level_04_Multiple_Browser" />-->
+            <class name="com.nopcommerce.commons.Level_20_Share_States_Login" />
+            <class name="com.nopcommerce.users.Level_20_Share_States" />
         </classes>
     </test>
-
-
-
 
 
 

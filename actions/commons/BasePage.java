@@ -153,6 +153,17 @@ public class BasePage {
         //Đến topic 76 chuyển sang dung locator prefix
     }
 
+    public Set<Cookie> getAllCookies(WebDriver driver) {
+        return driver.manage().getCookies();
+    }
+
+    public void setCookies(WebDriver driver, Set<Cookie> cookies) {
+        for(Cookie cookie : cookies){
+            driver.manage().addCookie(cookie);
+        }
+        sleepInSecond(3);
+    }
+
     public void clickToElement(WebDriver driver, String locator) {
         getElement(driver, locator).click();
     }
