@@ -7,6 +7,7 @@ import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageUIs.nopCommerce.users.BasePageUI;
 
 import java.time.Duration;
 import java.util.Date;
@@ -400,6 +401,10 @@ public class BasePage {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castParameter(locator,restParameter))));
     }
 
+    public void waitForElementAttribute(WebDriver driver, String locator, String attributeName, String attributeValue, String... restParameter) {
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.attributeToBe(getByLocator(castParameter(locator,restParameter)), attributeName, attributeValue));
+    }
+
     public void waitForElementVisible(WebDriver driver, String locator) {
         new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(locator)));
     }
@@ -448,4 +453,23 @@ public class BasePage {
         }
     }
 
+    public void enterToTextboxByID(WebDriver driver, String textboxID, String value) {
+        waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
+        sendkeyToElement(driver, BasePageUI.TEXTBOX_BY_ID, value, textboxID);
+    }
+
+    public void clickToButtonByText(WebDriver driver, String buttonText) {
+        waitForElementClickAble(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
+        clickToElement(driver, BasePageUI.BUTTON_BY_TEXT, buttonText);
+    }
+
+    public void clickToRadioByID(WebDriver driver, String radioID) {
+        waitForElementClickAble(driver, BasePageUI.RADIO_BY_ID, radioID);
+        clickToElement(driver, BasePageUI.RADIO_BY_ID, radioID);
+    }
+
+    public String getTextboxValueByID(WebDriver driver, String textboxID) {
+        waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
+        return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID,"value", textboxID);
+    }
 }
