@@ -17,7 +17,7 @@
         <parameter name="browser" value="firefox"></parameter>
         <classes>
             <class name="com.nopcommerce.commons.Level_20_Share_States_Login" />
-            <class name="com.nopcommerce.users.Level_20_Share_States" />
+            <class name="com.nopcommerce.users.Level_20_Share_States_close_Browser_Driver" />
         </classes>
     </test>
 

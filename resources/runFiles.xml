@@ -11,4 +11,11 @@
         </classes>
     </test>
 
+<!--    <test name="Run on Firefox browser">-->
+<!--        <parameter name="browser" value="firefox"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.users.Level_13_Assert" />-->
+<!--        </classes>-->
+<!--    </test>-->
+
 </suite>

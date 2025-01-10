@@ -17,5 +17,6 @@
     <orderEntry type="library" name="allure-report-2.24.0" level="project" />
     <orderEntry type="library" name="log4j-api-2.24.3" level="project" />
     <orderEntry type="library" name="libJira" level="project" />
+    <orderEntry type="library" name="jna-5.12.1" level="project" />
   </component>
 </module>
