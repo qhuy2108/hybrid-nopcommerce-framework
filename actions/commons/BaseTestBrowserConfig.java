@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.Duration;
+import java.util.List;
 import java.util.Random;
 
 public class BaseTestBrowserConfig {
@@ -33,23 +34,13 @@ public class BaseTestBrowserConfig {
 
         switch (browserList){
             case FIREFOX:
-                String profilePath = "C:/Users/Quanghuy/AppData/Roaming/Mozilla/Firefox/Profiles/HuyTest";  // Sửa lại đường dẫn cho đúng
-                FirefoxProfile profile = new FirefoxProfile(new File(profilePath));
-                FirefoxOptions firefoxOptions = new FirefoxOptions();
-                firefoxOptions.setProfile(profile);
-                driver = new FirefoxDriver(firefoxOptions);
+                driver = new FirefoxDriver();
                 break;
             case EDGE:
-                EdgeOptions edgeOptions = new EdgeOptions();
-                edgeOptions.addArguments("--user-data-dir=C:/Users/QuangHuy/AppData/Local/Microsoft/Edge/User Data/");
-                edgeOptions.addArguments("--profile-directory=Profile 1");
-                driver = new EdgeDriver(edgeOptions);
+                driver = new EdgeDriver();
                 break;
             case CHROME:
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--user-data-dir=C:/Users/QuangHuy/AppData/Local/Google/Chrome/User Data/");
-                chromeOptions.addArguments("--profile-directory=Profile 1");
-                driver = new ChromeDriver(chromeOptions);
+                driver = new ChromeDriver();
                 break;
             default:
                 throw new RuntimeException("Browser name is not valid.");
@@ -66,24 +57,51 @@ public class BaseTestBrowserConfig {
 
         switch (browserList){
             case FIREFOX:
+                driver = new FirefoxDriver();
+                break;
+            case EDGE:
+                driver = new EdgeDriver();
+                break;
+            case CHROME:
+                driver = new ChromeDriver();
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid.");
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().setSize(new Dimension(1600,960));
+        driver.get(url);
+        return driver;
+    }
+
+    protected WebDriver getBrowserDriverWithProfile(String browserName, String url){
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+
+        switch (browserList){
+            case FIREFOX:
                 String profilePath = "C:/Users/Quanghuy/AppData/Roaming/Mozilla/Firefox/Profiles/HuyTest";  // Sửa lại đường dẫn cho đúng
-                FirefoxProfile profile = new FirefoxProfile(new File(profilePath));
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
+                FirefoxProfile profile = new FirefoxProfile(new File(profilePath));
+
                 firefoxOptions.setProfile(profile);
                 driver = new FirefoxDriver(firefoxOptions);
                 break;
+
             case EDGE:
                 EdgeOptions edgeOptions = new EdgeOptions();
                 edgeOptions.addArguments("--user-data-dir=C:/Users/QuangHuy/AppData/Local/Microsoft/Edge/User Data/");
                 edgeOptions.addArguments("--profile-directory=Profile 1");
                 driver = new EdgeDriver(edgeOptions);
                 break;
+
             case CHROME:
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--user-data-dir=C:/Users/QuangHuy/AppData/Local/Google/Chrome/User Data/");
                 chromeOptions.addArguments("--profile-directory=Profile 1");
                 driver = new ChromeDriver(chromeOptions);
                 break;
+
             default:
                 throw new RuntimeException("Browser name is not valid.");
         }
@@ -101,11 +119,16 @@ public class BaseTestBrowserConfig {
 
         switch (browserList){
             case FIREFOX:
-                driver = new FirefoxDriver();
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.addPreference("dom.webnotifications.enable", false);
+                firefoxOptions.addPreference("geo.enable", false);
+                firefoxOptions.addPreference("geo.provider.use_corelocation", false);
+                firefoxOptions.addArguments("-private");
+
+                driver = new FirefoxDriver(firefoxOptions);
                 path = Paths.get(GlobalConstants.BROWSER_EXTENSION_PATH + "wappalyzer-6.10.76.xpi");
                 FirefoxDriver firefoxDriver = (FirefoxDriver) driver;
                 firefoxDriver.installExtension(path);
-                driver = firefoxDriver;
                 break;
 
             case CHROME:
@@ -169,6 +192,8 @@ public class BaseTestBrowserConfig {
         driver.get(url);
         return driver;
     }
+
+
 
     protected void assertTrue(boolean condition) {
         Assert.assertTrue(VerifyTrue(condition));
