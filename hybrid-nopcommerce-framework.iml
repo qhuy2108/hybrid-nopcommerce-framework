@@ -9,6 +9,7 @@
       <sourceFolder url="file://$MODULE_DIR$/testcases" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/javaSDET" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/resourcesLog" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/testData" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -18,5 +19,6 @@
     <orderEntry type="library" name="log4j-api-2.24.3" level="project" />
     <orderEntry type="library" name="libJira" level="project" />
     <orderEntry type="library" name="jna-5.12.1" level="project" />
+    <orderEntry type="library" name="Java Faker 1.0.1" level="project" />
   </component>
 </module>

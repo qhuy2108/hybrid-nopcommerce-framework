@@ -219,6 +219,17 @@ public class BaseTest {
     public int getRandomNumber() {
         return new Random().nextInt(9999);
     }
+
+    protected String getEmailRandom(){
+        Random random = new Random();
+        return "Micheal" + random.nextInt(99999) + "@hotmail.uss";
+    }
+
+    protected String getEmailRandom(String prefix){
+        Random random = new Random();
+        return prefix + random.nextInt(99999) + "@hotmail.uss";
+    }
+
     public void sleepInSecond(long timeInSecond) {
         try {
             Thread.sleep(timeInSecond * 1000);

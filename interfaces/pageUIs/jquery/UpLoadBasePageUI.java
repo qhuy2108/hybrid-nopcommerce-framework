@@ -1,4 +1,4 @@
-package jquery;
+package pageUIs.jquery;
 
 public class UpLoadBasePageUI {
 

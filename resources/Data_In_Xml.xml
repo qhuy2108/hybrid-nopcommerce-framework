@@ -4,10 +4,17 @@
 
     <parameter name="userUrl" value="https://demo.nopcommerce.com/"></parameter>
 
+    <parameter name="firstName" value="Ricardo"></parameter>
+    <parameter name="lastName" value="Kaka"></parameter>
+    <parameter name="emailAddress" value="Ricardo"></parameter>
+    <parameter name="password" value="123456"></parameter>
+
+
+
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_23_FakerDataTest" />
+            <class name="com.nopcommerce.users.Level_25_Data_In_XML" />
         </classes>
     </test>
 

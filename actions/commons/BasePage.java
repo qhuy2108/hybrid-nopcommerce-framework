@@ -1,6 +1,6 @@
 package commons;
 
-import jquery.UpLoadBasePageUI;
+import pageUIs.jquery.UpLoadBasePageUI;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUIs.nopCommerce.users.BasePageUI;
 
 import java.time.Duration;
-import java.util.Date;
 import java.util.List;
 import java.util.Set;
 

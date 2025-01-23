@@ -1,8 +1,8 @@
 package pageObjects.jquery;
 
 import commons.BasePage;
-import jquery.HomePageUI;
-import jquery.UpLoadBasePageUI;
+import pageUIs.jquery.HomePageUI;
+import pageUIs.jquery.UpLoadBasePageUI;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

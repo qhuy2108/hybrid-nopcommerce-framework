@@ -1,7 +1,7 @@
 package pageObjects.livetechpanda;
 
 import commons.BasePage;
-import livetechpanda.HomePageUI;
+import pageUIs.livetechpanda.HomePageUI;
 import org.openqa.selenium.WebDriver;
 
 public class HomePO extends BasePage {
