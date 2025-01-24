@@ -7,7 +7,7 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_23_FakerDataTest" />
+            <class name="com.nopcommerce.users.Level_28_Data_JSON" />
         </classes>
     </test>
 

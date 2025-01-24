@@ -1,9 +1,11 @@
 package pageObjects.nopCommerce.users;
 
 import commons.BasePage;
+import jsonData.nopCommerce.UserInfoJson;
 import org.openqa.selenium.WebDriver;
 import pageObjects.nopCommerce.PageGenerator;
 import pageUIs.nopCommerce.users.UserLoginPageUI;
+import pojoData.nopCommerce.UserInfo;
 
 public class UserLoginPO extends BasePage {
     public UserLoginPO(WebDriver driver) {
@@ -30,6 +32,20 @@ public class UserLoginPO extends BasePage {
     public UserHomePO loginToSystem(String emailAddress, String password) {
         enterToEmailTextbox(emailAddress);
         enterToPasswordTextbox(password);
+        clickToLoginButton();
+        return PageGenerator.getUserHomePage(driver);
+    }
+
+    public UserHomePO loginToUserForm(UserInfo userInfo) {
+        enterToEmailTextbox(userInfo.getEmailAddress());
+        enterToPasswordTextbox(userInfo.getPassword());
+        clickToLoginButton();
+        return PageGenerator.getUserHomePage(driver);
+    }
+
+    public UserHomePO loginToUserFormJson(UserInfoJson userInfo) {
+        enterToEmailTextbox(userInfo.getEmailAddress());
+        enterToPasswordTextbox(userInfo.getPassword());
         clickToLoginButton();
         return PageGenerator.getUserHomePage(driver);
     }

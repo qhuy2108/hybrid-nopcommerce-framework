@@ -34,7 +34,7 @@ public class GlobalConstants {
     public static final String EXTENT_PATH = PROJECT_PATH + "/extent-report-results/";
     public static final String ALLURE_PATH = PROJECT_PATH + "/htmlAllure/";
     // Data Test/Environment
-    public static final String DATA_TEST_PATH = PROJECT_PATH + "/data Test/";
+    public static final String DATA_TEST_PATH = PROJECT_PATH + "/dataTest/";
     public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig/";
     public static final String JAVA_VERSION = System.getProperty("java.version");
     

@@ -10,17 +10,18 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pageObjects.nopCommerce.PageGenerator;
 import pageObjects.nopCommerce.users.*;
+import pojoData.nopCommerce.UserInfo;
 import reportConfig.ExtentManager;
 
 import java.lang.reflect.Method;
 
-public class Level_26_Data_Internal extends BaseTest {
+public class Level_27_Data_POJO extends BaseTest {
     private WebDriver driver;
     private UserHomePO homePage;
     private UserRegisterPO registerPage;
     private UserLoginPO loginPage;
     private UserCustomerInfoPO customerInfoPage;
-
+    private UserInfo userInfo;
 
     String browserName;
 
@@ -32,10 +33,11 @@ public class Level_26_Data_Internal extends BaseTest {
         this.browserName = browserName.toUpperCase();
         driver = getBrowserDriver(browserName);
 
-        emailAddress = getEmailRandom(UserObjects.EMAIL);
-        firstName = UserObjects.FNAME;
-        lastName = UserObjects.LNAME;
-        password = UserObjects.PASS;
+        userInfo = UserInfo.getUser();
+        userInfo.setEmailAddress(getEmailRandom("UserObjects.EMAIL"));
+        userInfo.setFirstName("Toni");
+        userInfo.setLastName("Teo");
+        userInfo.setPassword("123456");
 
         day = "18";
         month = "September";
@@ -43,6 +45,7 @@ public class Level_26_Data_Internal extends BaseTest {
         companyName = "Milan";
 
         homePage = PageGenerator.getUserHomePage(driver);
+
 
     }
 
@@ -56,39 +59,26 @@ public class Level_26_Data_Internal extends BaseTest {
         ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 02: Click to Male radio button");
         registerPage.clickToMaleRadio();
 
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 03: Enter to FirstName textbox with value " + firstName);
-        registerPage.enterToFirstName(firstName);
-
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 04: Enter to LastName textbox with value " + lastName);
-        registerPage.enterToLastName(lastName);
+        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 03: Enter to Register Form");
+        registerPage.setToRegisterForm(userInfo);
 
         ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 05: Select Day dropdown with value " + day);
         registerPage.selectDayDropdown(day);
 
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 06: Select Month dropdown with value " + month);
+        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 05: Select Month dropdown with value " + month);
         registerPage.selectMonthDropdown(month);
 
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 07: Select Year dropdown with value " + year);
+        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 06: Select Year dropdown with value " + year);
         registerPage.selectYearDropdown(year);
 
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 08: Select Email Address textbox with value " + emailAddress);
-        registerPage.enterToEmailTextbox(emailAddress);
-
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 09: Select Company textbox with value " + companyName);
+        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 07: Select Company textbox with value " + companyName);
         registerPage.enterToCompanyTextbox(companyName);
 
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 10: Select Password textbox with value " + password);
-        registerPage.enterToPasswordTextbox(password);
-
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 11: Select Confirm Password textbox with value " + password);
-        registerPage.enterToConfirmPasswordTextbox(password);
-
-
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 12: Click to Register button");
+        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 08: Click to Register button");
         registerPage.clickToRegisterButton();
 
-        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 13: Verify success message is displayed");
-        Assert.assertEquals(registerPage.getRegisteredSuccessMessage() , "Your registration completed ...Fail...! ");
+        ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 09: Verify success message is displayed");
+        Assert.assertEquals(registerPage.getRegisteredSuccessMessage() , "Your registration completed");
 
     }
 
@@ -100,7 +90,7 @@ public class Level_26_Data_Internal extends BaseTest {
         // đang ở trang homePage gọi ra loginPage
         loginPage = homePage.clickToLoginLink();
 
-        loginPage.loginToSystem(emailAddress, password);
+        loginPage.loginToUserForm(userInfo);
 
         Assert.assertTrue(homePage.isMyAccountLinkDisplayed());
     }
@@ -112,14 +102,14 @@ public class Level_26_Data_Internal extends BaseTest {
         customerInfoPage = homePage.clickToMyAccountLink();
 
         Assert.assertTrue(customerInfoPage.isGenderMaleSelected());
-        Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
-        Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
+        Assert.assertEquals(customerInfoPage.getFirstNameTextboxValue(), userInfo.getFirstName());
+        Assert.assertEquals(customerInfoPage.getLastNameTextboxValue(), userInfo.getLastName());
 
         Assert.assertEquals(customerInfoPage.getDayDropdownSelectedValue(), day);
         Assert.assertEquals(customerInfoPage.getMonthDropdownSelectedValue(), month);
         Assert.assertEquals(customerInfoPage.getYearDropdownSelectedValue(),year);
         Assert.assertEquals(customerInfoPage.getCompanyTextboxValue(),companyName);
-        Assert.assertEquals(customerInfoPage.getEmailTextboxValue(),emailAddress);
+        Assert.assertEquals(customerInfoPage.getEmailTextboxValue(),userInfo.getEmailAddress());
     }
 
     @AfterClass

@@ -20,5 +20,6 @@
     <orderEntry type="library" name="libJira" level="project" />
     <orderEntry type="library" name="jna-5.12.1" level="project" />
     <orderEntry type="library" name="Java Faker 1.0.1" level="project" />
+    <orderEntry type="library" name="Jackson 2.15" level="project" />
   </component>
 </module>

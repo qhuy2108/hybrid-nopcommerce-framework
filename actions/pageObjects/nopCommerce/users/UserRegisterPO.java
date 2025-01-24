@@ -2,8 +2,10 @@ package pageObjects.nopCommerce.users;
 
 import commons.BasePage;
 import io.qameta.allure.Step;
+import jsonData.nopCommerce.UserInfoJson;
 import org.openqa.selenium.WebDriver;
 import pageUIs.nopCommerce.users.UserRegisterPageUI;
+import pojoData.nopCommerce.UserInfo;
 
 public class UserRegisterPO extends BasePage {
     public UserRegisterPO(WebDriver driver) {
@@ -86,4 +88,23 @@ public class UserRegisterPO extends BasePage {
         waitForElementVisible(driver, UserRegisterPageUI.REGISTER_PAGE_TITLE);
         return getElementText(driver, UserRegisterPageUI.REGISTER_PAGE_TITLE);
     }
+
+    public void setToRegisterForm(UserInfo userInfo) {
+        enterToFirstName(userInfo.getFirstName());
+        enterToLastName(userInfo.getLastName());
+        enterToEmailTextbox(userInfo.getEmailAddress());
+        enterToPasswordTextbox(userInfo.getPassword());
+        enterToConfirmPasswordTextbox(userInfo.getPassword());
+    }
+
+    public void setToRegisterFormJson(UserInfoJson userInfo) {
+        enterToFirstName(userInfo.getFirstName());
+        enterToLastName(userInfo.getLastName());
+        enterToEmailTextbox(userInfo.getEmailAddress());
+        enterToPasswordTextbox(userInfo.getPassword());
+        enterToConfirmPasswordTextbox(userInfo.getPassword());
+    }
+
+
+
 }
