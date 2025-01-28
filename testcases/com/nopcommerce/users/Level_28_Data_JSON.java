@@ -26,6 +26,7 @@ public class Level_28_Data_JSON extends BaseTest {
     private UserCustomerInfoPO customerInfoPage;
     private UserInfoJson userInfoJson;
 
+
     String browserName;
 
     String emailAddress, firstName, lastName, password, companyName, day, month, year;
