@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ProductPageObject extends BasePage{
+public class InventoryPageObject extends BasePage{
 	private WebDriver driver;
 
-	public ProductPageObject(WebDriver driver) {
+	public InventoryPageObject(WebDriver driver) {
 		this.driver = driver;
 	}
 

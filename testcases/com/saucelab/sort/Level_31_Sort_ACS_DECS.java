@@ -6,12 +6,12 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import pageObjects.saucelab.LoginPageObject;
 import pageObjects.saucelab.PageGenerator;
-import pageObjects.saucelab.ProductPageObject;
+import pageObjects.saucelab.InventoryPageObject;
 
 public class Level_31_Sort_ACS_DECS extends BaseTest {
 	
 	private LoginPageObject loginPage;
-	private ProductPageObject productPage;
+	private InventoryPageObject inventoryPage;
 	
 	private WebDriver driver;
 	
@@ -23,7 +23,7 @@ public class Level_31_Sort_ACS_DECS extends BaseTest {
 		loginPage = PageGenerator.getLoginPage(driver);
 		loginPage.enterToUserName("standard_user");
 		loginPage.enterToPassword("secret_sauce");
-		productPage = loginPage.clickToLoginButton();
+		inventoryPage = loginPage.clickToLoginButton();
 		
 	}
 	
@@ -31,20 +31,20 @@ public class Level_31_Sort_ACS_DECS extends BaseTest {
 	@Test
 	public void Sort_01_Name() {
 		
-		productPage.selectItemInSortDropdown("Name (A to Z)");
-		Assert.assertTrue(productPage.isProductNameSortByAscending());
+		inventoryPage.selectItemInSortDropdown("Name (A to Z)");
+		Assert.assertTrue(inventoryPage.isProductNameSortByAscending());
 		
-		productPage.selectItemInSortDropdown("Name (Z to A)");
-		Assert.assertTrue(productPage.isProductNameSortByDescending());
+		inventoryPage.selectItemInSortDropdown("Name (Z to A)");
+		Assert.assertTrue(inventoryPage.isProductNameSortByDescending());
 	}
 	
 	@Test
 	public void Sort_02_Price() {
-		productPage.selectItemInSortDropdown("Price (low to high)");
-		Assert.assertTrue(productPage.isProductPriceSortByAscending());
+		inventoryPage.selectItemInSortDropdown("Price (low to high)");
+		Assert.assertTrue(inventoryPage.isProductPriceSortByAscending());
 		
-		productPage.selectItemInSortDropdown("Price (high to low)");
-		Assert.assertTrue(productPage.isProductPriceSortByDescending());
+		inventoryPage.selectItemInSortDropdown("Price (high to low)");
+		Assert.assertTrue(inventoryPage.isProductPriceSortByDescending());
 	}
 	
 			

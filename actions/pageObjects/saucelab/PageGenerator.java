@@ -7,8 +7,8 @@ public class PageGenerator {
 		return new LoginPageObject(driver);
 	}
 
-	public static ProductPageObject getProductPage(WebDriver driver) {
-		return new ProductPageObject(driver);
+	public static InventoryPageObject getProductPage(WebDriver driver) {
+		return new InventoryPageObject(driver);
 	}
 	
 }
