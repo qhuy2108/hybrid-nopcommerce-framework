@@ -96,7 +96,7 @@ public class Level_23_FakerDataTest extends BaseTest {
         registerPage.clickToRegisterButton();
 
         ExtentManager.getTest().log(Status.INFO, "User_01_Register - STEP 13: Verify success message is displayed");
-        Assert.assertEquals(registerPage.getRegisteredSuccessMessage() , "Your registration completed ...Fail...! ");
+        Assert.assertEquals(registerPage.getRegisteredSuccessMessage() , "Your registration completed");
 
     }
 
