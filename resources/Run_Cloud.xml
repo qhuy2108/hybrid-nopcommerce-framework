@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="none" name="SauceLab - Web Automation UI" >
+
+    <listeners>
+                <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+
+    <parameter name="server" value="dev" />
+
+    <test name="Run on Firefox browser">
+        <parameter name="os" value="Windows"></parameter>
+        <parameter name="os_version" value="10"></parameter>
+        <parameter name="browser" value="Firefox"></parameter>
+        <parameter name="browser_version" value="latest"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_34_BrowserStack" />
+        </classes>
+    </test>
+
+    <test name="Run on Chrome browser">
+        <parameter name="os" value="Windows"></parameter>
+        <parameter name="os_version" value="10"></parameter>
+        <parameter name="browser" value="Chrome"></parameter>
+        <parameter name="browser_version" value="latest"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_34_BrowserStack" />
+        </classes>
+    </test>
+
+
+</suite>

@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -12,13 +13,17 @@ import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.Random;
 
 public class BaseTest {
@@ -141,6 +146,32 @@ public class BaseTest {
     }
 
 
+    protected WebDriver getBrowser_Stack_Driver(String url, String osName, String osVersion, String browserName, String browserVersion){
+        MutableCapabilities capabilities = new MutableCapabilities();
+        HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
+        capabilities.setCapability("browserName", browserName);
+        bstackOptions.put("os", osName);
+        bstackOptions.put("osVersion", osVersion);
+        bstackOptions.put("browserVersion", browserVersion);
+        bstackOptions.put("userName", "huydoan_NvZoHw");
+        bstackOptions.put("accessKey", "isyqFxAyLXLFs99dASAX");
+        bstackOptions.put("consoleLogs", "info");
+        bstackOptions.put("seleniumVersion", "4.2.2");
+        bstackOptions.put("projectName", "Auto Browser Stack");
+        bstackOptions.put("buildName", "automationfc");
+        capabilities.setCapability("bstack:options", bstackOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BROWSER_STACK_URL) , capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
 
 
     protected void assertTrue(boolean condition) {

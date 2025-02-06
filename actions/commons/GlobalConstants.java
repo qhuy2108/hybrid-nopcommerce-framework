@@ -1,5 +1,7 @@
 package commons;
 
+import java.net.URL;
+
 public class GlobalConstants {
     // System Infor
     public static final String PROJECT_PATH = System.getProperty("user.dir");
@@ -35,7 +37,7 @@ public class GlobalConstants {
     public static final String ALLURE_PATH = PROJECT_PATH + "/htmlAllure/";
     // Data Test/Environment
     public static final String DATA_TEST_PATH = PROJECT_PATH + "/dataTest/";
-    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/environmentConfig/";
+    public static final String ENVIRONMENT_CONFIG_PATH = PROJECT_PATH + "/enviromentConfig/";
     public static final String JAVA_VERSION = System.getProperty("java.version");
     
     // Jira
@@ -43,4 +45,9 @@ public class GlobalConstants {
     public static final String JIRA_USERNAME = "qhuy2108@gmail.com";
     public static final String JIRA_API_KEY = "ATATT3xFfGF00UhQeoNvFSnAp9hQFH8Q2Cpq8wuv3QMTqRyASicou8YdUhb-M-EOidlRhN2X7--kSBLPDKM7vcutXJzalrehrX3D0wE4guG48Ie_K8-Dj6VMMcwqpgdPubunGhiukoCLBBAzRl7MvA5gtiFvxbJ1Ea9-XnxonaQnbUmJroObSsw=698C9E9F";
     public static final String JIRA_PROJECT_KEY = "SCRUM" ;
+
+
+    public static final String BROWSER_USERNAME = "automationfc1";
+    public static final String BROWSER_AUTOMATE_KEY = "HzcRC4Q1fzuQhRJYSkhz";
+    public static final String BROWSER_STACK_URL = "https://" + BROWSER_USERNAME + ":" + BROWSER_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 }
