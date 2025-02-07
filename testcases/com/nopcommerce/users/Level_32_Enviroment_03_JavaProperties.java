@@ -10,7 +10,7 @@ import utilities.enviroment.PropertiesConfig;
 
 import java.lang.reflect.Method;
 
-public class Level_31_Enviroment_03_JavaProperties extends BaseTest {
+public class Level_32_Enviroment_03_JavaProperties extends BaseTest {
 
 	private PropertiesConfig propertiesConfig;
 	

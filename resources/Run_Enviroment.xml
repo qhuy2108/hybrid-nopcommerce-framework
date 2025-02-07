@@ -11,7 +11,7 @@
     <test name="Run on Firefox browser">
         <parameter name="browser" value="firefox"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_31_Enviroment_04_Owner" />
+            <class name="com.nopcommerce.users.Level_33_Enviroment_04_Owner" />
         </classes>
     </test>
 

@@ -8,27 +8,20 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import utilities.enviroment.EnviromentConfig;
-import utilities.enviroment.PropertiesConfig;
 
 import java.lang.reflect.Method;
 
-public class Level_31_Enviroment_04_Owner extends BaseTest {
+public class Level_35_SauceLab extends BaseTest {
 
 	private EnviromentConfig enviromentConfig;
 	
-	@Parameters({"browser", "server"})
+	@Parameters({"server", "os", "browser", "browser_version"})
 	@BeforeClass
-	public void beforeClass (String browserName, String serverName) {
+	public void beforeClass (String serverName, String osName, String browserName, String browserVersion ) {
 		ConfigFactory.setProperty("server", serverName);
 		enviromentConfig = ConfigFactory.create(EnviromentConfig.class);
 
-
-		System.out.println(enviromentConfig.appUrl());
-		System.out.println(enviromentConfig.appUserName());
-		System.out.println(enviromentConfig.appPassword());
-		System.out.println(enviromentConfig.dbUrl());
-
-		driver = getBrowserDriver(browserName, enviromentConfig.appUrl());
+		driver = getBrowser_SauceLab(enviromentConfig.appUrl(), osName, browserName, browserVersion);
 	}
 
 
@@ -45,7 +38,7 @@ public class Level_31_Enviroment_04_Owner extends BaseTest {
 			
 	@AfterClass(alwaysRun = true)
 	public void afterClass() {
-		// closeBrowserDriver();
+		 closeBrowserDriver();
 	}	
 	private WebDriver driver;
 }

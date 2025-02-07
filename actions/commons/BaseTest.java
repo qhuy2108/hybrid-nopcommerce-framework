@@ -2,7 +2,6 @@ package commons;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -16,7 +15,6 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.Reporter;
-import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.IOException;
@@ -145,7 +143,7 @@ public class BaseTest {
         return url;
     }
 
-
+    // version 4x
     protected WebDriver getBrowser_Stack_Driver(String url, String osName, String osVersion, String browserName, String browserVersion){
         MutableCapabilities capabilities = new MutableCapabilities();
         HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
@@ -173,6 +171,52 @@ public class BaseTest {
         return driver;
     }
 
+    // SauceLab version 4x
+    protected WebDriver getBrowser_SauceLab(String url, String osName, String browserName, String browserVersion){
+        MutableCapabilities capabilities = new MutableCapabilities();
+        HashMap<String, String> sauceOptions = new HashMap<String, String>();
+
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+        switch (browserList){
+            case FIREFOX:
+                FirefoxOptions firefoxOptions = new FirefoxOptions();
+                firefoxOptions.setPlatformName(osName);
+                firefoxOptions.setBrowserVersion(browserVersion);
+                capabilities = firefoxOptions;
+                break;
+            case EDGE:
+                EdgeOptions edgeOptions = new EdgeOptions();
+                edgeOptions.setPlatformName(osName);
+                edgeOptions.setBrowserVersion(browserVersion);
+                capabilities = edgeOptions;
+                break;
+            case CHROME:
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.setPlatformName(osName);
+                chromeOptions.setBrowserVersion(browserVersion);
+                capabilities = chromeOptions;
+                break;
+            default:
+                throw new RuntimeException("Browser name is not valid.");
+        }
+
+        sauceOptions.put("username", GlobalConstants.SAUCELAB_USERNAME);
+        sauceOptions.put("accessKey", GlobalConstants.SAUCELAB_ACCESS_KEY);
+        sauceOptions.put("build", "<automate-testing>");
+        sauceOptions.put("name", "Run on" + osName + " | " + browserName + " | " + browserVersion);
+        capabilities.setCapability("sauce:options", sauceOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.SAUCELAB_URL) , capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
 
     protected void assertTrue(boolean condition) {
         Assert.assertTrue(VerifyTrue(condition));

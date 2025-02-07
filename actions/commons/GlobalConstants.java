@@ -1,7 +1,5 @@
 package commons;
 
-import java.net.URL;
-
 public class GlobalConstants {
     // System Infor
     public static final String PROJECT_PATH = System.getProperty("user.dir");
@@ -47,7 +45,22 @@ public class GlobalConstants {
     public static final String JIRA_PROJECT_KEY = "SCRUM" ;
 
 
-    public static final String BROWSER_USERNAME = "automationfc1";
-    public static final String BROWSER_AUTOMATE_KEY = "HzcRC4Q1fzuQhRJYSkhz";
-    public static final String BROWSER_STACK_URL = "https://" + BROWSER_USERNAME + ":" + BROWSER_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+    public static final String BROWSER_STACK_USERNAME = "automationfc1";
+    public static final String BROWSER_STACK_AUTOMATE_KEY = "HzcRC4Q1fzuQhRJYSkhz";
+    public static final String BROWSER_STACK_URL = "https://" + BROWSER_STACK_USERNAME + ":" + BROWSER_STACK_AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
+
+    public static final String SAUCELAB_USERNAME = "oauth-qhuy2108-25071";
+    public static final String SAUCELAB_ACCESS_KEY = "e5ddbde2-bf64-44e4-a3e3-9935f06d590c" ;
+    public static final String SAUCELAB_URL = "https://" + SAUCELAB_USERNAME + ":" + SAUCELAB_ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
+
+
+    public static final String LAMBDA_USERNAME = "gameacc2019";
+    public static final String LAMBDA_ACCESS_KEY = "7eVQ2TWyVfogAtXPnfBEZrHa2QixydZWmFDVEI776VI5a3l07i" ;
+    public static final String LAMBRA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_ACCESS_KEY + "@hub.lambdatest.com/wd/hub";
+
+    public static final String CROSS_USERNAME = "gameacc2019";
+    public static final String CROSS_KEY = "7eVQ2TWyVfogAtXPnfBEZrHa2QixydZWmFDVEI776VI5a3l07i" ;
+    public static final String CROSS_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_ACCESS_KEY + "@hub.lambdatest.com/wd/hub";
+
+
 }
