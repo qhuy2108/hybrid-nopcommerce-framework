@@ -11,19 +11,17 @@ import utilities.enviroment.EnviromentConfig;
 
 import java.lang.reflect.Method;
 
-public class Level_34_BrowserStack extends BaseTest {
+public class Level_35_CloudTest_SauceLab extends BaseTest {
 
 	private EnviromentConfig enviromentConfig;
 	
-	@Parameters({"server", "os", "os_version", "browser", "browser_version"})
+	@Parameters({"server", "os", "browser", "browser_version"})
 	@BeforeClass
-	public void beforeClass (String serverName, String osName, String osVersion, String browserName, String browserVersion ) {
+	public void beforeClass (String serverName, String osName, String browserName, String browserVersion ) {
 		ConfigFactory.setProperty("server", serverName);
 		enviromentConfig = ConfigFactory.create(EnviromentConfig.class);
 
-
-
-		driver = getBrowser_Stack_Driver(enviromentConfig.appUrl(), osName, osVersion, browserName, browserVersion);
+		driver = getBrowser_SauceLab(enviromentConfig.appUrl(), osName, browserName, browserVersion);
 	}
 
 

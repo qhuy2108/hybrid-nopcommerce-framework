@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="SauceLab - Web Automation UI" >
+
+    <listeners>
+                <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+
+    <parameter name="server" value="dev" />
+
+    <test name="Run on Firefox browser">
+        <parameter name="os" value="linux"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="browser_version" value="134"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_37_CloudTest_Lambda" />
+        </classes>
+    </test>
+
+    <test name="Run on Chrome browser">
+        <parameter name="os" value="Windows 10"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
+        <parameter name="browser_version" value="132"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_37_CloudTest_Lambda" />
+        </classes>
+    </test>
+
+    <test name="Run on Safari browser">
+        <parameter name="os" value="macOS Sonoma"></parameter>
+        <parameter name="browser" value="safari"></parameter>
+        <parameter name="browser_version" value="17"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_37_CloudTest_Lambda" />
+        </classes>
+    </test>
+
+
+</suite>

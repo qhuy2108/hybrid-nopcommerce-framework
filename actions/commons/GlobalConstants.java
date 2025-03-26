@@ -54,13 +54,34 @@ public class GlobalConstants {
     public static final String SAUCELAB_URL = "https://" + SAUCELAB_USERNAME + ":" + SAUCELAB_ACCESS_KEY + "@ondemand.eu-central-1.saucelabs.com:443/wd/hub";
 
 
-    public static final String LAMBDA_USERNAME = "gameacc2019";
-    public static final String LAMBDA_ACCESS_KEY = "7eVQ2TWyVfogAtXPnfBEZrHa2QixydZWmFDVEI776VI5a3l07i" ;
-    public static final String LAMBRA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_ACCESS_KEY + "@hub.lambdatest.com/wd/hub";
+    public static final String LAMBDA_USERNAME = "qhuy2108";
+    public static final String LAMBDA_AUTOMATE_KEY = "8km04EJCCyTqIi6trNzayZjMzwmAHbqyp7iVUzeni0lzshlNwk" ;
+    public static final String LAMBRA_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_AUTOMATE_KEY + "@hub.lambdatest.com/wd/hub";
 
-    public static final String CROSS_USERNAME = "gameacc2019";
-    public static final String CROSS_KEY = "7eVQ2TWyVfogAtXPnfBEZrHa2QixydZWmFDVEI776VI5a3l07i" ;
-    public static final String CROSS_URL = "https://" + LAMBDA_USERNAME + ":" + LAMBDA_ACCESS_KEY + "@hub.lambdatest.com/wd/hub";
+    public static final String BITBAR_USERNAME = "gameacc2019";
+    public static final String BITBAR_AUTOMATE_KEY = "7eVQ2TWyVfogAtXPnfBEZrHa2QixydZWmFDVEI776VI5a3l07i" ;
+    public static final String BITBAR_URL = "https://" + BITBAR_USERNAME + ":" + BITBAR_AUTOMATE_KEY + "@hub.lambdatest.com/wd/hub";
 
 
+    // Singleton pattern
+    private static GlobalConstants globalInstance;
+    private GlobalConstants() {
+    }
+    public static synchronized GlobalConstants getGlobalConstants() {
+
+        if (globalInstance == null) {
+            globalInstance = new GlobalConstants();
+        }
+
+        return globalInstance;
+    }
+
+    private static final long SINGLETON_SHORT_TIMEOUT = 5;
+    private static final long SINGLETON_LONG_TIMEOUT = 30;
+
+    /*
+     * public long getSingletonShortTimeout() { return SINGLETON_SHORT_TIMEOUT;; }
+     *
+     * public long getSingletonLongTimeout() { return SINGLETON_LONG_TIMEOUT; }
+     */
 }

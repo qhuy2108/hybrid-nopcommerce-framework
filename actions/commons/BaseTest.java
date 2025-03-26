@@ -13,6 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.safari.SafariOptions;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -20,7 +21,9 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -218,6 +221,102 @@ public class BaseTest {
         return driver;
     }
 
+    protected WebDriver getBrowser_Bitbar(String url, String osName, String osVersion, String browserName, String browserVersion) {
+        MutableCapabilities capabilities = new MutableCapabilities();
+        capabilities.setCapability("platformName", osName);
+        capabilities.setCapability("browserName", browserName);
+        capabilities.setCapability("browserVersion", browserVersion);
+
+        HashMap<String, String> bitbarOptions = new HashMap<String, String>();
+        bitbarOptions.put("project", "NopCommerce");
+        bitbarOptions.put("testrun", "Run on " + osName + " | " + osVersion + " | " + browserName + " | " + browserVersion);
+        bitbarOptions.put("apiKey", GlobalConstants.BITBAR_AUTOMATE_KEY);
+        bitbarOptions.put("osVersion", osVersion);
+
+        if (osName.contains("Windows") || osName.contains("Linux")) {
+            bitbarOptions.put("resolution", "1920x1080");
+        } else {
+            bitbarOptions.put("resolution", "1920x1200");
+        }
+
+        bitbarOptions.put("seleniumVersion", "4");
+
+        capabilities.setCapability("bitbar:options", bitbarOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.BITBAR_URL), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
+    protected WebDriver getBrowser_Lambda(String url, String osName, String browserName, String browserVersion) {
+        MutableCapabilities capability = null;
+
+        switch (browserName) {
+            case "firefox":
+                FirefoxOptions fOptions = new FirefoxOptions();
+                fOptions.setPlatformName(osName);
+                fOptions.setBrowserVersion(browserVersion);
+                capability = fOptions;
+                break;
+            case "chrome":
+                ChromeOptions cOptions = new ChromeOptions();
+                cOptions.setPlatformName(osName);
+                cOptions.setBrowserVersion(browserVersion);
+                capability = cOptions;
+                break;
+            case "edge":
+                EdgeOptions eOptions = new EdgeOptions();
+                eOptions.setPlatformName(osName);
+                eOptions.setBrowserVersion(browserVersion);
+                capability = eOptions;
+                break;
+            case "safari":
+                SafariOptions sOptions = new SafariOptions();
+                sOptions.setPlatformName(osName);
+                sOptions.setBrowserVersion(browserVersion);
+                capability = sOptions;
+                break;
+            default:
+                throw new RuntimeException("Browser is not valid!");
+        }
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat formater = new SimpleDateFormat("dd_MM_yyyy_hh_mm_ss");
+
+        HashMap<String, Object> lambdaOptions = new HashMap<String, Object>();
+        lambdaOptions.put("username", GlobalConstants.LAMBDA_USERNAME);
+        lambdaOptions.put("accessKey", GlobalConstants.LAMBDA_AUTOMATE_KEY);
+        lambdaOptions.put("visual", true);
+        lambdaOptions.put("video", true);
+        lambdaOptions.put("build", "nopcommerce-build");
+        lambdaOptions.put("project", "NopCommerce - UI Automation Testing");
+        lambdaOptions.put("name", "Run on " + osName + " | " + browserName + " | " + browserVersion + " | " + formater.format(calendar.getTime()));
+        lambdaOptions.put("w3c", true);
+        lambdaOptions.put("selenium_version", "4.23.0");
+        lambdaOptions.put("resolution", "1920x1080");
+        lambdaOptions.put("plugin", "java-testNG");
+
+        capability.setCapability("LT:Options", lambdaOptions);
+
+        try {
+            driver = new RemoteWebDriver(new URL(GlobalConstants.LAMBRA_URL), capability);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT));
+        driver.manage().window().maximize();
+        driver.get(url);
+        return driver;
+    }
+
     protected void assertTrue(boolean condition) {
         Assert.assertTrue(VerifyTrue(condition));
     }
@@ -361,5 +460,6 @@ public class BaseTest {
             e.printStackTrace();
         }
     }
+
 
 }

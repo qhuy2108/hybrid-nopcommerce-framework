@@ -23,5 +23,6 @@
     <orderEntry type="library" name="Jackson 2.15" level="project" />
     <orderEntry type="library" name="poi 5.2" level="project" />
     <orderEntry type="library" name="owner-1.0.12" level="project" />
+    <orderEntry type="library" name="databaseTesting" level="project" />
   </component>
 </module>
