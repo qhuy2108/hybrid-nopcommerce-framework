@@ -2,7 +2,6 @@ package com.nopcommerce.users;
 
 import commons.BaseTest;
 import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
@@ -48,7 +47,7 @@ public class Level_13_Verify extends BaseTest {
         registerPage =  homePage.clickToRegisterLink();
 
         //Assert 01 ==> co tinh de false
-        VerifyEquals(registerPage.getRegisterPageTitle(), "REGISTER");
+        verifyEquals(registerPage.getRegisterPageTitle(), "REGISTER");
 
         registerPage.clickToMaleRadio();
         registerPage.enterToFirstName(firstName);
@@ -64,7 +63,7 @@ public class Level_13_Verify extends BaseTest {
         registerPage.clickToRegisterButton();
 
         // False
-        VerifyEquals(registerPage.getRegisteredSuccessMessage(), "Your registration completed !!!! ");
+        verifyEquals(registerPage.getRegisteredSuccessMessage(), "Your registration completed !!!! ");
 
     }
 
@@ -77,7 +76,7 @@ public class Level_13_Verify extends BaseTest {
 
         loginPage.loginToSystem(emailAddress, password);
 
-        VerifyTrue(homePage.isMyAccountLinkDisplayed());
+        verifyTrue(homePage.isMyAccountLinkDisplayed());
 
 
     }
@@ -86,15 +85,15 @@ public class Level_13_Verify extends BaseTest {
     public void User_03_MyAccount() {
         customerInfoPage = homePage.clickToMyAccountLink();
 
-        VerifyTrue(customerInfoPage.isGenderMaleSelected());
-        VerifyEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
-        VerifyEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
+        verifyTrue(customerInfoPage.isGenderMaleSelected());
+        verifyEquals(customerInfoPage.getFirstNameTextboxValue(), firstName);
+        verifyEquals(customerInfoPage.getLastNameTextboxValue(), lastName);
 
-        VerifyEquals(customerInfoPage.getDayDropdownSelectedValue(), day);
-        VerifyEquals(customerInfoPage.getMonthDropdownSelectedValue(), month);
-        VerifyEquals(customerInfoPage.getYearDropdownSelectedValue(),year);
-        VerifyEquals(customerInfoPage.getCompanyTextboxValue(),companyName);
-        VerifyEquals(customerInfoPage.getEmailTextboxValue(),emailAddress);
+        verifyEquals(customerInfoPage.getDayDropdownSelectedValue(), day);
+        verifyEquals(customerInfoPage.getMonthDropdownSelectedValue(), month);
+        verifyEquals(customerInfoPage.getYearDropdownSelectedValue(),year);
+        verifyEquals(customerInfoPage.getCompanyTextboxValue(),companyName);
+        verifyEquals(customerInfoPage.getEmailTextboxValue(),emailAddress);
 
     }
 

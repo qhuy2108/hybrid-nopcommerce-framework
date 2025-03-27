@@ -2,6 +2,8 @@ package commons;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
@@ -318,10 +320,10 @@ public class BaseTest {
     }
 
     protected void assertTrue(boolean condition) {
-        Assert.assertTrue(VerifyTrue(condition));
+        Assert.assertTrue(verifyTrue(condition));
     }
 
-    protected boolean VerifyTrue(boolean condition) {
+    protected boolean verifyTrue(boolean condition) {
         boolean status = true;
         try {
             Assert.assertTrue(condition);
@@ -334,7 +336,7 @@ public class BaseTest {
 
     }
 
-    protected boolean VerifyFalse(boolean condition) {
+    protected boolean verifyFalse(boolean condition) {
         boolean status = true;
         try {
             Assert.assertFalse(condition);
@@ -346,7 +348,7 @@ public class BaseTest {
         return status;
     }
 
-    protected boolean VerifyEquals(Object actual, Object expected) {
+    protected boolean verifyEquals(Object actual, Object expected) {
         boolean status = true;
         try {
             Assert.assertEquals(actual, expected);
@@ -459,6 +461,16 @@ public class BaseTest {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    protected String getCurrentDate() {
+        DateTime nowUTC = new DateTime(DateTimeZone.UTC);
+        int day = nowUTC.getDayOfMonth();
+        if (day < 10) {
+            String dayValue = "0" + day;
+            return dayValue;
+        }
+        return String.valueOf(day);
     }
 
 

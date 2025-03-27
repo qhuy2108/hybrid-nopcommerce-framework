@@ -239,6 +239,10 @@ public class BasePage {
         return getListElement(driver, locator).size();
     }
 
+    public int getListElementNumber(WebDriver driver , String locator, String... restParameter) {
+        return getListElement(driver, castParameter(locator, restParameter)).size();
+    }
+
     public void checkToCheckbox(WebDriver driver , String locator) {
         WebElement element = getElement(driver, locator);
         if (!element.isSelected()) {
@@ -482,4 +486,5 @@ public class BasePage {
         waitForElementVisible(driver, BasePageUI.TEXTBOX_BY_ID, textboxID);
         return getElementAttribute(driver, BasePageUI.TEXTBOX_BY_ID,"value", textboxID);
     }
+
 }
