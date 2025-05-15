@@ -1,5 +1,6 @@
 package commons;
 
+import factoryEnviroment.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
@@ -28,6 +29,7 @@ import java.time.Duration;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
     private WebDriver driver;
@@ -125,6 +127,39 @@ public class BaseTest {
         return driver;
     }
 
+    protected WebDriver getBrowserRefactor(String url, String evnName, String serverName, String browserName, String ipAddress,
+                                           String portNumber, String osName, String osVersion, String browser_version){
+        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+
+        switch (evnName) {
+            case "local":
+                driver = new LocalFactory(browserName).createDriver();
+                break;
+
+//            case "grid":
+//                driver = new GridFactory(browserName, ipAddress, portNumber).createDriver(); break;
+
+            case "browserStack":
+                driver = new BrowserstackFactory(browserName, osName, osVersion).createDriver(); break;
+
+//            case "saucelab":
+//                driver = new SaucelabFactory(browserName, osName, browser_version).createDriver(); break;
+
+            case "lambda":
+                driver = new Lambda_Factory(browserName, osName, browser_version).createDriver(); break;
+
+            default:
+                driver = new LocalFactory (browserName).createDriver();
+                break;
+        }
+        driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+        driver.get(url);
+        System.out.println(url);
+        return driver;
+    }
+
+
     private String getUrlByServerName(String serverName) {
         String url = null;
         ServerList server = ServerList.valueOf(serverName.toUpperCase());
@@ -149,7 +184,7 @@ public class BaseTest {
     }
 
     // version 4x
-    protected WebDriver getBrowser_Stack_Driver(String url, String osName, String osVersion, String browserName, String browserVersion){
+    protected WebDriver getBrowser_Browserstack(String url, String osName, String osVersion, String browserName, String browserVersion){
         MutableCapabilities capabilities = new MutableCapabilities();
         HashMap<String, Object> bstackOptions = new HashMap<String, Object>();
         capabilities.setCapability("browserName", browserName);

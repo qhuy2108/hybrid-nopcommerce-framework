@@ -17,14 +17,14 @@
         </classes>
     </test>
 
-    <test name="Run on Chrome browser">
-        <parameter name="os" value="linux"></parameter>
-        <parameter name="browser" value="chrome"></parameter>
-        <parameter name="browser_version" value="latest"></parameter>
-        <classes>
-            <class name="com.nopcommerce.users.Level_35_CloudTest_SauceLab" />
-        </classes>
-    </test>
+<!--    <test name="Run on Chrome browser">-->
+<!--        <parameter name="os" value="linux"></parameter>-->
+<!--        <parameter name="browser" value="chrome"></parameter>-->
+<!--        <parameter name="browser_version" value="latest"></parameter>-->
+<!--        <classes>-->
+<!--            <class name="com.nopcommerce.users.Level_35_CloudTest_SauceLab" />-->
+<!--        </classes>-->
+<!--    </test>-->
 
 
 </suite>

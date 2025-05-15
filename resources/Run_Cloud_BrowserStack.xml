@@ -18,7 +18,7 @@
         </classes>
     </test>
 
-    <test name="Run on Chrome browser">
+    <!--<test name="Run on Chrome browser">
         <parameter name="os" value="Windows"></parameter>
         <parameter name="os_version" value="10"></parameter>
         <parameter name="browser" value="Chrome"></parameter>
@@ -26,7 +26,7 @@
         <classes>
             <class name="com.nopcommerce.users.Level_34_CloudTest_BrowserStack" />
         </classes>
-    </test>
+    </test>-->
 
 
 </suite>

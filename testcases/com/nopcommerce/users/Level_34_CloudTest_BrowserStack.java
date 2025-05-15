@@ -21,9 +21,7 @@ public class Level_34_CloudTest_BrowserStack extends BaseTest {
 		ConfigFactory.setProperty("server", serverName);
 		enviromentConfig = ConfigFactory.create(EnviromentConfig.class);
 
-
-
-		driver = getBrowser_Stack_Driver(enviromentConfig.appUrl(), osName, osVersion, browserName, browserVersion);
+		driver = getBrowser_Browserstack(enviromentConfig.appUrl(), osName, osVersion, browserName, browserVersion);
 	}
 
 

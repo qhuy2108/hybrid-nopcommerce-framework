@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="nopcommerce_evn_server">
+
+    <listeners>
+        <listener class-name="commons.MethodListener"></listener>
+    </listeners>
+
+    <parameter name="evnName" value="browserStack"></parameter>
+    <parameter name="server" value="dev"></parameter>
+
+    <test name="Run on Firefox browser">
+        <parameter name="os" value="Windows"></parameter>
+        <parameter name="os_version" value="10"></parameter>
+        <parameter name="browser" value="firefox"></parameter>
+        <parameter name="browser_version" value="130"></parameter>
+        <classes>
+            <class name="com.nopcommerce.users.Level_38_Run_Refactor_Test" />
+        </classes>
+    </test>
+
+<!--    browserStack , lambda-->
+
+</suite>
