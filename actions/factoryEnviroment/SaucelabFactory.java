@@ -19,13 +19,13 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
 
-public class SaucelabFactory {
+public class SaucelabFactory implements EnviromentFactory {
     private WebDriver driver;
     private String browserName;
     private String osName;
     private String browser_version;
 
-    public SaucelabFactory(String browserName, String osName, String browser_version) {
+    public SaucelabFactory (String browserName, String osName, String browser_version) {
         this.browserName = browserName;
         this.osName = osName;
         this.browser_version = browser_version;

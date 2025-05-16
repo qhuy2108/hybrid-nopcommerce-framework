@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
 
-public class LocalFactory {
+public class LocalFactory implements EnviromentFactory{
     private WebDriver driver;
     private String browserName;
 

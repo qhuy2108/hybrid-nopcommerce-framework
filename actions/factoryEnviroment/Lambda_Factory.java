@@ -22,7 +22,7 @@ import java.time.Duration;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class Lambda_Factory {
+public class Lambda_Factory implements EnviromentFactory {
     private WebDriver driver;
     private String browserName;
     private String osName;
