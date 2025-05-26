@@ -356,7 +356,7 @@ public class BasePage {
         new Actions(driver).scrollToElement(getElement(driver, locator)).perform();
     }
 
-
+// ---------------------------------------------------------------------------------------------------------------------
 
     public void hightlightElement(WebDriver driver, String locator) {
         WebElement element = getElement(driver, locator);
@@ -414,6 +414,7 @@ public class BasePage {
                 getElement(driver, locator));
     }
 
+// ---------------------------------------------------------------------------------------------------------------------
 
 
     public void waitForElementVisible(WebDriver driver, String locator, String... restParameter) {
