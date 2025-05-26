@@ -28,6 +28,7 @@ public class SQLTestConnection {
         // Duyệt trên kết quả trả về
         while (rs.next()) {
             // Di chuyển con trỏ xuống bản ghi kế tiếp.
+            
             String empFirstName = rs.getString(1);
             String empLastName = rs.getString("NAME");
 

@@ -371,6 +371,11 @@ public class BasePage {
         sleepInSecond(3);
     }
 
+    public void clickToElementByJS(WebDriver driver, String locator, String... restParameter) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", getElement(driver, castParameter(locator, restParameter)));
+        sleepInSecond(3);
+    }
+
     public void scrollToElementOnDownByJS(WebDriver driver, String locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(false);", getElement(driver, locator));
     }
@@ -383,16 +388,16 @@ public class BasePage {
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,document.body.scrollHeight)");
     }
 
+    public void sendkeyToElementByJS(WebDriver driver, String locator, String value) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + value + "')", getElement(driver, locator));
+    }
+
     public void setAttributeInDOM(WebDriver driver, String locator, String attributeName, String attributeValue) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('" + attributeName + "', '" + attributeValue + "');", getElement(driver, locator));
     }
 
     public void removeAttributeInDOM(WebDriver driver, String locator, String attributeRemove) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].removeAttribute('" + attributeRemove + "');", getElement(driver, locator));
-    }
-
-    public void sendkeyToElementByJS(WebDriver driver, String locator, String value) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].setAttribute('value', '" + value + "')", getElement(driver, locator));
     }
 
     public String getAttributeInDOMByJS(WebDriver driver, String locator, String attributeName) {

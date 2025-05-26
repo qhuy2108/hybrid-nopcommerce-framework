@@ -35,11 +35,13 @@ public class MySQLTestConnection {
 
             int userID = rs.getInt(1);
             String userLogin = rs.getString(2);
+            String column3 = rs.getString(3);
             String userEmail = rs.getString("user_email");
 
             System.out.println("--------------------");
             System.out.println("User Id:" + userID);
             System.out.println("User Login:" + userLogin);
+            System.out.println("User Cot3:" + column3);
             System.out.println("User Email:" + userEmail);
         }
         // Đóng kết nối
