@@ -1,4 +1,4 @@
-package factoryBrowser;
+package browserFactory;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,7 +10,6 @@ public class HeadlessChormeDriverManager implements BrowserFactory{
         ChromeOptions options = new ChromeOptions();
         options.addArguments("-headless");
         options.addArguments("window-size=1600x900");
-
         return new ChromeDriver(options);
     }
 }

@@ -1,12 +1,7 @@
-package factoryEnviroment;
+package enviromentFactory;
 
 import commons.BrowserList;
 import commons.GlobalConstants;
-import factoryBrowser.ChormeDriverManager;
-import factoryBrowser.EdgeDriverManager;
-import factoryBrowser.FirefoxDriverManager;
-import factoryBrowser.HeadlessChormeDriverManager;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

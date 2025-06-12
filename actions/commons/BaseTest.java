@@ -1,6 +1,6 @@
 package commons;
 
-import factoryEnviroment.*;
+import enviromentFactory.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.joda.time.DateTime;
@@ -129,27 +129,27 @@ public class BaseTest {
 
     protected WebDriver getBrowserRefactor(String url, String evnName, String serverName, String browserName, String ipAddress,
                                            String portNumber, String osName, String osVersion, String browser_version){
-        BrowserList browserList = BrowserList.valueOf(browserName.toUpperCase());
+        EnviromentList enviromentList = EnviromentList.valueOf(evnName.toUpperCase());
 
-        switch (evnName) {
-            case "local":
-                driver = new LocalFactory(browserName).createDriver();
+        switch (enviromentList) {
+            case LOCAL:
+                driver = new LocalEnviromentFactory(browserName).createDriver();
                 break;
 
-//            case "grid":
-//                driver = new GridFactory(browserName, ipAddress, portNumber).createDriver(); break;
+            case GRID:
+                driver = new GridEnviromentFactory(browserName, osName, ipAddress, portNumber).createDriver(); break;
 
-            case "browserStack":
-                driver = new BrowserstackFactory(browserName, osName, osVersion).createDriver(); break;
+            case BROWSERSTACK:
+                driver = new BrowserStackEnviromentFactory(browserName, osName, osVersion, browser_version).createDriver(); break;
 
-//            case "saucelab":
-//                driver = new SaucelabFactory(browserName, osName, browser_version).createDriver(); break;
+            case SAUCELAB:
+                driver = new SaucelabEnviromentFactory(browserName, osName, browser_version).createDriver(); break;
 
-            case "lambda":
+            case LAMBDA:
                 driver = new Lambda_Factory(browserName, osName, browser_version).createDriver(); break;
 
             default:
-                driver = new LocalFactory (browserName).createDriver();
+                driver = new LocalEnviromentFactory(browserName).createDriver();
                 break;
         }
         driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);

@@ -8,22 +8,22 @@ import utilities.enviroment.EnviromentConfig;
 
 import java.lang.reflect.Method;
 
-public class Level_38_Run_Refactor_Test extends BaseTest {
+public class Level_38_Enviroment_Factory extends BaseTest {
 
-    private EnviromentConfig enviromentConfig;
+    private EnviromentConfig serverConfig;
 
     @Parameters({"evnName", "server", "browser", "ipAddress", "portNumber", "osName", "os_version", "browser_version"})
     @BeforeClass
     public void beforeClass (@Optional("local") String evnName, @Optional("dev") String serverName,
                              @Optional("chrome") String browserName,
-                             @Optional("") String ipAddress, @Optional("") String portNumber,
+                             @Optional("") String ipAddress, @Optional("4444") String portNumber,
                              @Optional("Windows") String osName, @Optional("10") String osVersion,
                              @Optional("latest") String browser_version) {
 
         ConfigFactory.setProperty("server", serverName);
-        enviromentConfig = ConfigFactory.create(EnviromentConfig.class);
+        serverConfig = ConfigFactory.create(EnviromentConfig.class);
 
-        driver = getBrowserRefactor(enviromentConfig.appUrl(), evnName, serverName, browserName, ipAddress, portNumber, osName, osVersion, browser_version);
+        driver = getBrowserRefactor(serverConfig.appUrl(), evnName, serverName, browserName, ipAddress, portNumber, osName, osVersion, browser_version);
     }
 
 

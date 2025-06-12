@@ -1,20 +1,18 @@
-package factoryEnviroment;
+package enviromentFactory;
 
+import com.sun.jna.WString;
 import commons.BrowserList;
-import factoryBrowser.ChormeDriverManager;
-import factoryBrowser.EdgeDriverManager;
-import factoryBrowser.FirefoxDriverManager;
-import factoryBrowser.HeadlessChormeDriverManager;
-import org.openqa.selenium.Dimension;
+import browserFactory.ChormeDriverManager;
+import browserFactory.EdgeDriverManager;
+import browserFactory.FirefoxDriverManager;
+import browserFactory.HeadlessChormeDriverManager;
 import org.openqa.selenium.WebDriver;
 
-import java.time.Duration;
-
-public class LocalFactory implements EnviromentFactory{
+public class LocalEnviromentFactory implements EnviromentFactory{
     private WebDriver driver;
     private String browserName;
 
-    public LocalFactory (String browserName) {
+    public LocalEnviromentFactory(String browserName) {
         this.browserName = browserName;
     }
 

@@ -1,12 +1,6 @@
-package factoryEnviroment;
+package enviromentFactory;
 
-import commons.BrowserList;
 import commons.GlobalConstants;
-import factoryBrowser.ChormeDriverManager;
-import factoryBrowser.EdgeDriverManager;
-import factoryBrowser.FirefoxDriverManager;
-import factoryBrowser.HeadlessChormeDriverManager;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -16,17 +10,18 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
 
-public class BrowserstackFactory {
+public class BrowserStackEnviromentFactory {
     private WebDriver driver;
     private String browserName;
     private String osName;
     private String osVersion;
     private String browserVersion;
 
-    public BrowserstackFactory(String browserName, String osName, String osVersion) {
+    public BrowserStackEnviromentFactory(String browserName, String osName, String osVersion, String browserVersion) {
         this.browserName = browserName;
         this.osName = osName;
         this.osVersion = osVersion;
+        this.browserVersion = browserVersion;
     }
 
     public WebDriver createDriver(){

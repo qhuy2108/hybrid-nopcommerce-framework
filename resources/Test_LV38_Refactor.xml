@@ -6,7 +6,7 @@
         <listener class-name="commons.MethodListener"></listener>
     </listeners>
 
-    <parameter name="evnName" value="browserStack"></parameter>
+    <parameter name="evnName" value="local"></parameter>
     <parameter name="server" value="dev"></parameter>
 
     <test name="Run on Firefox browser">
@@ -15,7 +15,7 @@
         <parameter name="browser" value="firefox"></parameter>
         <parameter name="browser_version" value="130"></parameter>
         <classes>
-            <class name="com.nopcommerce.users.Level_38_Run_Refactor_Test" />
+            <class name="com.nopcommerce.users.Level_38_Enviroment_Factory" />
         </classes>
     </test>
 

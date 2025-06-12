@@ -1,12 +1,12 @@
 package commons;
 
-import pageUIs.jquery.UpLoadBasePageUI;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pageUIs.jquery.UpLoadBasePageUI;
 import pageUIs.nopCommerce.users.BasePageUI;
 
 import java.time.Duration;
@@ -49,6 +49,7 @@ public class BasePage {
         driver.navigate().refresh();
     }
 
+    // -----------------------------------------------------------------------------------------------------------------
 
     public Alert waitAlertPresence(WebDriver driver) {
         return new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.alertIsPresent());
@@ -418,7 +419,8 @@ public class BasePage {
 
 
     public void waitForElementVisible(WebDriver driver, String locator, String... restParameter) {
-        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castParameter(locator,restParameter))));
+        new WebDriverWait(driver, Duration.ofSeconds(GlobalConstants.LONG_TIMEOUT)).
+                until(ExpectedConditions.visibilityOfElementLocated(getByLocator(castParameter(locator,restParameter))));
     }
 
     public void waitForElementAttribute(WebDriver driver, String locator, String attributeName, String attributeValue, String... restParameter) {

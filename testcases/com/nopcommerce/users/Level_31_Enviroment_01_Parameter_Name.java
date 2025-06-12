@@ -1,6 +1,7 @@
 package com.nopcommerce.users;
 
 import commons.BaseTest;
+import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +16,7 @@ public class Level_31_Enviroment_01_Parameter_Name extends BaseTest {
 	@BeforeClass
 	public void beforeClass (String browserName, String serverName) {
 		driver = getBrowserEnviroment(browserName, serverName);
-		
+
 	}
 
 
