@@ -133,8 +133,7 @@ public class BaseTest {
 
         switch (enviromentList) {
             case LOCAL:
-                driver = new LocalEnviromentFactory(browserName).createDriver();
-                break;
+                driver = new LocalEnviromentFactory(browserName).createDriver(); break;
 
             case GRID:
                 driver = new GridEnviromentFactory(browserName, osName, ipAddress, portNumber).createDriver(); break;
@@ -149,8 +148,7 @@ public class BaseTest {
                 driver = new Lambda_Factory(browserName, osName, browser_version).createDriver(); break;
 
             default:
-                driver = new LocalEnviromentFactory(browserName).createDriver();
-                break;
+                throw new RuntimeException("Enviroment Name is not valid");
         }
         driver.manage().timeouts().implicitlyWait(GlobalConstants.LONG_TIMEOUT, TimeUnit.SECONDS);
         driver.manage().window().maximize();
