@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageUIs.jquery.UpLoadBasePageUI;
 import pageUIs.nopCommerce.users.BasePageUI;
 
+import java.text.Normalizer;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
@@ -465,6 +466,62 @@ public class BasePage {
         System.out.println(fullFileName);
         getElement(driver, UpLoadBasePageUI.UPLOAD_FILE).sendKeys(fullFileName);
     }
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // Xoá khoảng trắng đầu và cuối
+    public static String trim(String input) {
+        return input == null ? "" : input.trim();
+    }
+
+    // Rút gọn nhiều khoảng trắng thành 1 space
+    public static String normalizeWhitespace(String input) {
+        return input == null ? "" : input.trim().replaceAll("\\s+", " ");
+    }
+
+    // Xoá toàn bộ khoảng trắng (kể cả giữa)
+    public static String removeAllWhitespace(String input) {
+        return input == null ? "" : input.replaceAll("\\s+", "");
+    }
+
+    // Xoá ký tự đặc biệt (giữ chữ, số và khoảng trắng)
+    public static String removeSpecialCharacters(String input) {
+        return input == null ? "" : input.replaceAll("[^\\p{L}\\p{N} ]", "");
+    }
+
+    // Xoá dấu tiếng Việt
+    public static String removeVietnamese(String input) {
+        if (input == null) return "";
+        String normalized = Normalizer.normalize(input, Normalizer.Form.NFD);
+        return normalized.replaceAll("\\p{M}", "");
+    }
+
+    // Làm sạch chuỗi toàn diện: xóa dấu, đặc biệt, chuẩn hóa khoảng trắng
+    public static String cleanText(String input) {
+        return removeSpecialCharacters(
+                removeVietnamese(
+                        normalizeWhitespace(input)
+                )
+        ).toLowerCase();
+    }
+
+    // Kiểm tra chuỗi null hoặc trống
+    public static boolean StringisEmpty(String input) {
+        return input == null || input.trim().isEmpty();
+    }
+
+    // Viết hoa chữ cái đầu
+    public static String capitalizeFirst(String input) {
+        if (StringisEmpty(input)) return "";
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
 
 
     public void sleepInSecond(long timeInSecond) {
